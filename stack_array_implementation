@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+int MAXSIZE = 8;
+int stack[8];
+int last = -1;
+
+int isfull() {
+
+   if(last == MAXSIZE-1)
+      return 1;
+   else
+      return 0;
+}
+
+int push(int x) {
+
+  if(!isfull()) {
+      last = last + 1;
+      stack[last] = x;
+   } else {
+      printf("Could not insert data, Stack is full.\n");
+   }
+}
+
+int top() {
+   return stack[last];
+}
+
+int size()
+{
+    return stack[last];
+}
+
+int isempty() {
+
+   if(last == -1)
+      return 1;
+   else
+      return 0;
+}
+
+int pop() {
+   int x;
+
+   if(!isempty()) {
+      x = stack[last];
+      //last = last - 1;
+      --last;
+      return x;
+   } else {
+      printf("Could not retrieve data, Stack is empty.\n");
+   }
+}
+int main()
+{
+
+while(!isfull())
+{
+    int a;
+    scanf("%d",&a);
+    push(a);
+}
+
+   printf("Element at top of the stack: %d\n" ,top());
+   printf(" size : %d",size());
+
+   printf("Elements: \n");
+
+   while(!isempty()) {
+      int x = pop();
+      printf("%d\n",x);
+   }
+}
