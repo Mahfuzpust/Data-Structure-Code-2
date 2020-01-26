@@ -1,0 +1,36 @@
+#include<stdio.h>
+
+int arr[10];
+int head = 0;
+int tail = 0;
+
+ void push( int data)
+{
+arr[tail]=data;
+tail++;
+printf("%d ",data);
+}
+
+ int pop()
+{
+int val=arr[tail-1];
+tail--;
+return val;
+}
+
+int main()
+{
+for(int i=head;i<tail;i++);
+push(8);
+push(2);
+push(4);
+
+printf("\n");
+
+printf("%d ",pop());
+printf("%d ",pop());
+printf("%d ",pop());
+return 0;
+};
+
+
