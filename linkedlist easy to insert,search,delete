@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+#include<stdlib.h>
+
+class Node
+{
+public:
+    int data;
+    Node *Next;
+};
+
+void insert( Node *s, int data)
+{
+    while(s->Next!=NULL)
+    {
+        s= s->Next;
+    }
+    s->Next = new Node();
+    s->Next->data=data;
+    s->Next->Next=NULL;
+}
+
+void show(Node *s)
+{
+    while(s->Next!=NULL)
+    {
+
+        cout << "The Result : " <<s->Next->data<<endl;
+        s= s->Next;
+    }
+}
+
+void search( Node *s, int data)
+{
+    int count =0;
+     while(s->Next!=NULL)
+     {
+         if(s->Next->data==data)
+         {
+             count++;
+         }
+         s= s->Next;
+     }
+     cout << "Total %d is found " << count ;
+}
+
+void deletenode( Node *s, int data)
+{
+     while(s->Next!=NULL)
+     {
+         if(s->Next->data==data)
+         {
+             s->Next=s->Next->Next;
+             return ;
+         }
+         s=s->Next;
+     }
+}
+
+int main()
+{
+    Node *head = new Node();
+   head->Next=NULL;
+
+   insert(head,10);
+   insert(head,20);
+   insert(head,30);
+   insert(head,20);
+   show(head);
+
+   search(head, 20);
+
+   deletenode(head,10);
+   deletenode(head,20);
+   show(head);
+}
+
